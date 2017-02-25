@@ -1,0 +1,15 @@
+{
+  "presets": [
+    "react-app",
+    "stage-3"
+  ],
+  "plugins": [
+    "transform-runtime",
+    [
+      "resolver",
+      {
+        "resolveDirs": ["src"]
+      }
+    ]
+  ]
+}
