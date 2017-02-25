@@ -5,6 +5,10 @@ import { parkCar } from 'actions/parking'
 
 import CarCreator from './CarCreator';
 
-export default connect(() => ({}), (dispatch) => bindActionCreators({
+export default connect(({parking: {avalibleForTrucks, avalibleForSpecial, avalibleForSedans}}) => ({
+  avalibleForTrucks,
+  avalibleForSpecial,
+  avalibleForSedans
+}), (dispatch) => bindActionCreators({
   parkCar
 }, dispatch))(CarCreator);

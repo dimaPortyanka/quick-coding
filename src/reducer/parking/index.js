@@ -9,6 +9,9 @@ const defaultState = {
   busyPlaces: [],
   specialPlace: [1, 3, 5],
   truckPlace: [2, 4, 7],
+  avalibleForTrucks: true,
+  avalibleForSpecial: true,
+  avalibleForSedans: true
 }
 
 export default handleActions({
@@ -49,7 +52,10 @@ export default handleActions({
     return {
       ...state,
       busyPlaces: [...state.busyPlaces, choosenPlace],
-      freePlaces: state.freePlaces.filter((freePlace) => freePlace !== choosenPlace)
+      freePlaces: state.freePlaces.filter((freePlace) => freePlace !== choosenPlace),
+      avalibleForTrucks: state.truckPlace.filter((truck) => state.freePlaces.includes(truck)).length > 0,
+      avalibleForSpecial: state.freePlaces.length > 0,
+      avalibleForSedans: state.freePlaces.filter((freePlace) => !state.specialPlace.includes(freePlace)).length > 0
     };
   }
 }, defaultState);
